@@ -1,0 +1,20 @@
+#work .column .hover {
+	display: none !important;
+}
+
+#team .column .portrait .hover {
+	display: none;
+}
+
+#slider .nivo-controlNav a {
+	background: #ccc;
+}
+
+#nav {
+	overflow: visible !important;
+	position: relative !important;
+}
+
+#nav-toggle {
+	display: none;
+}

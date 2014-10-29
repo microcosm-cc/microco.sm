@@ -1,0 +1,28 @@
+.wordmark {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.mission {
+  margin-bottom: 50px;
+}
+
+.navlinks {
+  margin-top: 50px;
+}
+
+@media (min-width: 768px) {
+  .product-row {
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .product-item {
+    margin-bottom: 20px;
+  }
+  .wordmark {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}

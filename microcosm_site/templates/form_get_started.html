@@ -1,0 +1,11 @@
+<div class="form-get-started">
+	<form class="form-inline" role="form" action="{% url 'dashboard-sites-create' %}" method="POST">
+		<div class="form-group">
+			<input type="text" class="form-control" name="new_site_name" id="new_site_name" placeholder="Name your community" required />
+		</div>
+		{% csrf_token %}
+		<button type="submit" class="btn btn-success">Get started for free</button>
+	</form>
+	<br/>
+	<small>No software to install, 30 seconds setup, no credit card required</small>
+</div>

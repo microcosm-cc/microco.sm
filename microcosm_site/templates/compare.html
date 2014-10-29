@@ -1,0 +1,101 @@
+{% extends 'marketing_base.html' %}
+
+{% block content %}
+<div id="compare-jumbotron" class="jumbotron">
+	<div class="jumbotron-text">
+		<img src="{{STATIC_URL}}/img/icon-speech-cash.png" />
+		<div class="text-headline">
+			<h2>Pricing</h2>
+			<p>Microcosm was built to make it easy for you and your users to build and grow a great community.</p>
+		</div>
+	</div>
+</div>
+<div class="compareview-body">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+
+				<div class="compareview-annoucement">
+					<h3>Whilst we're in beta, we are offering our Pro Forum for free!</h3>
+					<p>
+						During our beta period, create as many forums as you like for free.<br/>We'll notify you before we come out of beta.
+					</p>
+				</div>
+				<div class="compare-table-wrapper">
+					<div class="compare-table">
+						<div class="compare-table-plan">
+							<h2>Pro Forum</h2>
+							<p>
+								An affordable starting price to start building and growing your community.
+								The Pro Forum comes <strong>fully featured</strong> with no artificial limits or restrictions.
+							</p>
+							<div class="compare-table-price">
+								<strike>$10 / month</strike>
+								<span class="compare-table-price-label">Free during the beta period!</span>
+							</div>
+							<div class="compare-table-button">
+								<a class="btn btn-primary" href="{% url 'dashboard-sites-create' %}">Create your forum now</a>
+							</div>
+						</div>
+						<div class="compare-table-plan">
+							<h2>Business Forum</h2>
+							<p>
+								For growing communities, Microcosm offers a business plan
+								which offers custom SSL certificates for your custom domain
+								and priority support.
+							</p>
+							<div class="compare-table-price">
+								Contact us for pricing
+							</div>
+							<div class="compare-table-button">
+								<a class="btn btn-primary" href="mailto:sales@microcosm.cc?Subject=Business Forum Enquiry">Contact us</a>
+							</div>
+						</div>
+					</div> <!--/compare-table-->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="compare-partnership">
+	<div class="compare-partnership-inner">
+		<div class="compare-partnership-inner-head">
+			<h3>We succeed when you succeed</h3>
+			<p>
+				To offer everyone an affordable forum and to make sure we're building software for your forum users,<br>
+				we make our revenue from the side effects of highly engaged communities
+			</p>
+		</div>
+		<ul>
+			<li>
+				<h4>
+					<span class="glyphicon glyphicon-transfer"></span>
+					Referral fees
+				</h4>
+				<p>
+					Like a travel agent, an online shop may pay us for the referral of a customer.
+				</p>
+			</li>
+			<li>
+				<h4>
+					<span class="glyphicon glyphicon-shopping-cart"></span>
+					Optional services
+				</h4>
+				<p>
+					We may add features that help your forum users, such as helping them sell tickets for events or sell items through classified adverts.
+				</p>
+			</li>
+			<li>
+				<h4>
+					<span class="glyphicon glyphicon-user"></span>
+					Verification fees
+				</h4>
+				<p>
+					Forum users may wish to purchase a verified status. This may be required to enable users to participate in election processes (virtual <abbr title="Annual General Meeting">AGM</abbr>).
+				</p>
+			</li>
+		</ul>
+	</div>
+</div> <!-- /.compare-partnerships -->
+{% endblock %}

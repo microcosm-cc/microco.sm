@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>Edit your profile</h1>
+
+	<form action="" method="post" id="profileForm" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ form.id }}
+
+		<h4><label for="id_profileName">{{ form.profileName.label }}</label></h4>
+		<div>
+			{{ form.profileName }}
+			{% if form.errors.profileName %}
+				<div class="text-error">{{ form.errors.profileName.as_text }}</div>
+			{% endif %}
+		</div>
+
+		<h4><label for="id_avatar">Choose a picture to be your avatar</label></h4>
+        {{ form.avatar }}
+		{% if avatar_error %}
+			<p>{{ avatar_error }}</p>
+		{% else %}
+			<p>Your avatar should be a square image under 30KB with jpg, png or gif file extension.</p>
+		{% endif %}
+
+		<input class="btn btn-primary pull-right" id="submit" type="submit" value="Save profile">
+	</form>
+
+{% endblock %}
+
+{% block js %}
+	<script type="text/javascript">
+		function isEmpty(e) {
+			return (e.val().trim() == '');
+		}
+		function checkEmpty(e) {
+			if (isEmpty($(e))) {
+				addError($(e))
+			} else {
+				removeError($(e))
+			}
+		}
+		function addError(e) {
+			e.parent().addClass('has-error')
+		}
+		function removeError(e) {
+			e.parent().removeClass('has-error')
+		}
+
+		$('#id_profileName').on('change', function() {
+			checkEmpty(this);
+		}).on('blur', function() {
+			checkEmpty(this);
+		});
+
+		$(document).ready(function() {
+			$('#id_profileName').addClass('form-control').parent().addClass('form-group');
+			$('#id_avatar').addClass('form-control').addClass('btn').addClass('btn-default').parent().addClass('form-group');
+		});
+	</script>
+{% endblock %}

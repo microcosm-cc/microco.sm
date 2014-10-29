@@ -1,0 +1,51 @@
+CLIENT_ID = '1'
+CLIENT_SECRET = 'ABCDE12345'
+API_SCHEME = 'https://'
+API_DOMAIN_NAME = 'microco.sm'
+API_PATH = 'api'
+API_VERSION = 'v1'
+RIEMANN_ENABLED = False
+RIEMANN_HOST = ''
+MEMCACHE_HOST = '127.0.0.1'
+MEMCACHE_PORT = 11211
+SECRET_KEY = 'changeme'
+PAGE_SIZE = 25
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+    },
+    'handlers': {
+        'stdout':{
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['stdout'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['stdout'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'sitegen.views': {
+            'handlers': ['stdout'],
+            'level': 'DEBUG',
+            'propagate' : True,
+        },
+        'sitegen.middleware': {
+            'handlers': ['stdout'],
+            'level': 'DEBUG',
+            'propagate' : True,
+        }
+    }
+}

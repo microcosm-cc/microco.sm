@@ -1,0 +1,14 @@
+{% extends 'marketing_base.html' %}
+
+{% block title %}Error 403 (Forbidden) | {{ site.title | safe }}{% endblock title %}
+
+{% block content %}
+<div class="container dashboard-container">
+	<div class="row">
+		<div class="col-sm-8 col-md-9 dashboard-left">
+			<p>You'll need to log in to do that.</p>
+			<p><a href="javascript:login()">Click here to log in</a>.</p>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,156 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+<div class="create-wrapper">
+	<div class="create-content">
+		<div class="container">
+
+			<div class="create-content-inner">
+
+				<div class="create-form form-dashboard">
+					<div class="create-form-header">Microcosm</div>
+
+					<div class="create-form-inner" style="padding-bottom:10px; padding-right:20px; margin-bottom: 10px;">
+						<h3>{% if user %}Your account{% else %}Create your account{% endif %}</h3>
+						<div class="form-horizontal">
+							<div class="form-fields">
+								{% if not user %}
+								<div class="col-sm-10">First, let us know your email address.</div>
+								<div class="col-sm-10">
+									<a href="#" onclick="navigator.id.request()">
+										<button type="submit" class="btn btn-primary" style="margin-top: 10px;">
+											Create account to continue
+										</button>
+									</a>
+								</div>
+								{% else %}
+								<div class="col-sm-12">
+									You're logged in as <a href="{% url 'dashboard' %}">{{ user.email }}</a>
+								</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+
+					<div class="create-form-inner">
+						<h3>Create a site</h3>
+
+						<form role="form" class="form-horizontal" action="{% url 'dashboard-sites-create' %}" method="POST">
+							<fieldset{% if not user %} disabled{% endif %}>
+							<div class="form-fields">
+								<div class="form-group">
+									<label for="input_site_name" class="col-sm-4">Site name</label>
+									<div class="col-sm-8">
+										<input type="text" maxlength="50" class="form-control" id="input_site_name" name="site_name" {% if site_name %}value="{{ site_name }}"{% else %}placeholder="Enter name of your site..."{% endif %} required />
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="input_site_desc" class="col-sm-4">Site description</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="input_site_desc" name="site_description" placeholder="Enter a short description of your site" required maxlength="300"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="input_site_domain" class="col-sm-4">Site URL</label>
+
+									<div class="col-sm-8 input-text-inline">
+										http://
+										<input type="text" class="form-control" id="input_site_domain" name="site_subdomain" placeholder="" required pattern="[a-z0-9]+" maxlength="50" />
+										.microco.sm
+									</div>
+									<p class="col-sm-offset-4 col-sm-8 help-block" id="reserved-result">
+									</p>
+									<div class="clearfix"></div>
+									<p class="col-sm-offset-4 col-sm-8 help-block">
+										Lowercase letters and numbers only. You can add your own domain after setup.
+									</p>
+								</div>
+
+								<!--
+								<div>
+									<p>
+									<a href="#" data-toggle="collapse" data-target="#create-form-advanced">Add your logo</a>
+									<span class="text-muted"><i>Optional</i></span>
+									</p>
+								</div>
+								<div id="create-form-advanced" class="collapse">
+									<div class="form-group">
+										<label for="input_logo" class="col-sm-4">Site logo</label>
+										<div class="col-sm-8">
+											<input type="file" id="input_logo">
+											<p class="help-block">
+												Logo will be resized to 240x89px
+											</p>
+										</div>
+									</div>
+								</div>
+								-->
+
+							</div>
+							<div class="form-footer">
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" required>
+										I have read, understood and agree to the <a href="{% url 'site-terms' %}" target="_blank">terms of service</a>.
+									</label>
+								</div>
+								{% csrf_token %}
+								<div class="pull-right">
+									<button type="submit" class="btn {% if user %}btn-primary{% else %}btn-disabled{% endif %}">
+										Create Site
+									</button>
+								</div>
+							 </div>
+							</fieldset>
+						</form>
+					</div>
+				</div> <!--/.create-form -->
+
+				<div class="create-copy">
+					<h3>You're only moments away from creating your own site!</h3>
+					<p>Here are some good to knows</p>
+
+					<ul class="list-ok">
+						<li>
+							<div class="glyphicon-wrapper">
+								<span class="glyphicon glyphicon-ok"></span>
+							</div>
+							<strong>30 days free trial</strong>
+							<p>
+								Try out Microcosm free for 30 days. If you decide not to continue using Microcosm, simple delete your site(s) before your trial ends and you won't be charged.
+							</p>
+						</li>
+						<li>
+							<div class="glyphicon-wrapper">
+								<span class="glyphicon glyphicon-ok"></span>
+							</div>
+							<strong>Safe, secure and reliable</strong>
+							<p>
+								We take care of the tech, maintenance, uptime and backups.
+							</p>
+						</li>
+
+						<li>
+							<div class="glyphicon-wrapper">
+								<span class="glyphicon glyphicon-ok"></span>
+							</div>
+							<strong>No lock-in</strong>
+							<p>Freely import and export your data</p>
+						</li>
+
+					</ul>
+				</div> <!--/.create-copy -->
+
+				<div class="clearfix"></div>
+
+				<div class="create-footer">
+					&copy; Microcosm CC Ltd.
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block js %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/reserved-check.js"></script>
+{% endblock %}

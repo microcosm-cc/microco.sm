@@ -1,3 +1,12 @@
+ENV
+*.pyc
+.idea
+*.iml
+local_settings.py
+sitegen/local_settings.py
+sitegen/application.log
+newrelic.ini
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

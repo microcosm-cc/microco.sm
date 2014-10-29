@@ -1,0 +1,14 @@
+{% extends 'marketing_base.html' %}
+
+{% block title %}Error 500 (Internal Server Error) | {{ site.title | safe }}{% endblock title %}
+
+{% block content %}
+<div class="container dashboard-container">
+	<div class="row">
+		<div class="col-sm-8 col-md-9 dashboard-left">
+			<p>Sorry, something bad happened when we tried to process your request. The error has been recorded and we'll look into it.</p>
+			<p><a href="/">Click to go back to the homepage</a>.</p>
+		</div>
+	</div>
+</div>
+{% endblock %}

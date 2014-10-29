@@ -1,0 +1,17 @@
+{% extends 'marketing_base.html' %}
+
+{% block content %}
+<div class="generic-page">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="generic-page-content">
+
+					{{ content.html | safe }}
+
+				</div> <!-- /generic-page -->
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

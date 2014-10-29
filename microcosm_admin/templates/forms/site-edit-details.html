@@ -1,0 +1,48 @@
+<form role="form" class="form-horizontal" action="{% url 'dashboard-sites-edit' site_edit.site_id %}" method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	<input type="hidden" name="site_subdomain_key" value="{{ site_edit.subdomain_key}}" />
+	<div class="form-group">
+		<label for="input_site_name" class="col-sm-4 col-md-3" >Site name</label>
+		<div class="col-sm-8 col-md-6">
+			<input type="text" class="form-control" id="input_site_name" name="site_name" value="{{site_edit.title}}" maxlength="50" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="input_site_desc" class="col-sm-4 col-md-3">Site description</label>
+		<div class="col-sm-8 col-md-6">
+			<input type="text" class="form-control" id="input_site_desc" name="site_description" value="{{site_edit.description}}" maxlength="300" />
+		</div>
+	</div>
+
+
+	<div class="form-group">
+		<label for="input_logo" class="col-sm-4 col-md-3">Site logo</label>
+		<div class="col-sm-8 col-md-6">
+			{% if site_edit.logo_url %}
+			<p class="help-block">Current logo</p>
+			<img src="{{ site_edit.logo_url }}" />
+			{% endif %}
+			<input type="file" name="logo" id="input_logo" accept="image/*">
+			<p class="help-block">
+				Logo will be displayed at 240x89px
+			</p>
+		</div>
+	</div>
+
+	{% if site_edit.logo_url != default_logo %}
+	<div class="form-group">
+		<label for="input_reset_logo" class="col-sm-4 col-md-3">Reset logo to default</label>
+		<div class="col-sm-8 col-md-8">
+			<input type="checkbox" id="input_reset_logo" name="reset_logo" value="false" />
+		</div>
+	</div>
+	{% endif %}
+
+	<div class="form-group">
+		<label class="col-sm-4 col-md-3"></label>
+		<div class="col-sm-8 col-md-8">
+			<button type="submit" class="btn btn-primary">Save changes</button>
+			<!--<button class="btn btn-default">Cancel</button>-->
+		</div>
+	</div>
+</form>

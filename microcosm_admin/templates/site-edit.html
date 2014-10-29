@@ -1,0 +1,111 @@
+{% extends 'admin_base.html' %}
+{% block css %}
+<link type="text/css" rel="stylesheet" href="{{STATIC_URL}}colorpicker/css/colorpicker.css" />
+{% endblock %}
+{% block navbar %}
+	{% include 'navbar.html' %}
+{% endblock %}
+{% block content %}
+<div class="dashboard">
+	<div class="container dashboard-container">
+		<div class="row">
+			<div class="col-sm-8 col-md-9 dashboard-left">
+				<div class="clearfix">
+					<a href="{% url 'dashboard-sites' %}">&larr; Back to your sites</a>
+					<ul class="dashboard-list">
+						<li class="dashboard-list-left">
+							<h3 class="dashboard-list-left-sitename">
+								{{ site_edit.title }}
+							</h3>
+						
+							{% if site_edit.domain %}
+							<a class="dashboard-list-left-siteurl" href="http://{{ site_edit.domain }}">
+								{{ site_edit.domain }}
+							{% else %}
+							<a class="dashboard-list-left-siteurl" href="http://{{ site_edit.subdomain_key }}.microco.sm">
+								{{ site_edit.subdomain_key }}.microco.sm
+							{% endif %}
+								<span class="glyphicon glyphicon-new-window"></span>
+							</a>
+						</li>
+					</ul>
+
+					{% if site_new %}
+					<div class="dashboard-flash-message flash-message-success">
+						<span class="glyphicon glyphicon-ok"></span>
+						Your site has been successfully created!
+					</div>
+					{% endif %}
+				</div>
+
+				<div class="dashboard-left-menu">
+					<ul>
+						<li {% if not section_name or section_name == "details" %}class="active"{% endif %}>
+							<a href="{% url 'dashboard-sites-edit' site_edit.site_id %}?section_name=details">
+								<span class="dashboard-icon-sprites dashboard-icon-name {% if not section_name or section_name == "details" %}active{%endif%}"></span>
+								<span>Name &amp; Logo</span>
+							</a>
+						</li>
+						<li {% if section_name == "theme" %}class="active"{% endif %}>
+							<a href="{% url 'dashboard-sites-edit' site_edit.site_id %}?section_name=theme">
+								<span class="dashboard-icon-sprites dashboard-icon-color {% if section_name == "theme" %}active{%endif%}"></span>
+								<span>Backgrounds &amp; colors</span>
+							</a>
+						</li>
+{% comment %}
+						<li {% if section_name == "permissions" %}class="active"{%endif%}>
+							<a href="{% url 'dashboard-sites-edit' site_edit.site_id %}?section_name=permissions">
+								<span class="dashboard-icon-sprites dashboard-icon-permissions {% if section_name == "permissions" %}active{%endif%}"></span>
+								<span>Roles &amp; permissions</span>
+							</a>
+						</li>
+						<li {% if section_name == "notifications" %}class="active"{%endif%}>
+							<a href="{% url 'dashboard-sites-edit' site_edit.site_id %}?section_name=notifications">
+								<span class="dashboard-icon-sprites dashboard-icon-notifications {% if section_name == "notifications" %}active{%endif%}"></span>
+								<span>Notifications</span>
+							</a>
+						</li>
+						<li class="dashboard-left-menu-options">
+							<div class="dropdown">
+								<a href="#" data-toggle="dropdown" data-target="#dashboard-left-menu-options">More Options <b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+									<li><a href="#">More options 1</a></li>
+									<li><a href="#">More options 2</a></li>
+									<li><a href="#">More options 3</a></li>
+ 								</ul>
+						</li>
+{% endcomment %}
+					</ul>
+				</div>
+
+				<div class="dashboard-tabs">
+					<div id="tab-edit" class="dashboard-tab">
+					{% if edit_form %}
+						{{ edit_form|safe }}
+					{% endif %}
+					</div>
+				</div>
+
+			</div>
+			<div class="col-sm-4 col-md-3 dashboard-right">
+
+				<a href="{% url 'dashboard-sites-create' %}" class="btn btn-primary btn-block">Add a site</a>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+{% endblock %}
+{% block footer %}
+	{% include 'footer.html' %}
+{% endblock %}
+
+
+{% block js %}
+{% if section_name == 'theme' %}
+<script type="text/javascript" src="{{STATIC_URL}}colorpicker/js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/dashboard-edit-theme.js"></script>
+{% endif %}
+{% endblock %}

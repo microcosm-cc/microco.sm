@@ -1,0 +1,285 @@
+{% extends 'marketing_base.html' %}
+
+{% block content %}
+<div id="features-jumbotron" class="jumbotron">
+	<div class="jumbotron-text">
+		<img src="{{STATIC_URL}}/img/icon-speech-features.png" />
+		<div class="text-headline">
+			<h2>Features</h2>
+			<p>
+				Fully featured from the start.<br/>Our forums give you and your community the full experience at no extra cost.
+			</p>
+		</div>
+	</div>
+</div>
+
+<div id="featuresview">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="compare-features">
+					<h3 class="content-section-title content-section-title-hr">
+						<span>Features Table</span>
+					</h3>
+					<div>
+
+						<p class="text-centered">
+							Compare our features to those of our competitors.
+						</p>
+
+						<div class="compare-table-features">
+
+							<table class="table table-hover">
+								<tr class="compare-table-th-row">
+									<th></th>
+									<th>Microcosm</th>
+									<th>Vanilla</th>
+									<th>vBulletin</th>
+									<th>Invision PB</th>
+								</tr>
+								<tr>
+									<th colspan="5" class="subheader">Starter plans</th>
+								</tr>
+								<tr>
+									<td>Monthly cost</td>
+									<td class="warning">$10</td>
+									<td>$99</td>
+									<td>$15</td>
+									<td>$20</td>
+								</tr>
+								<tr>
+									<td>User limits</td>
+									<td class="warning">Unlimited</td>
+									<td>Unlimited</td>
+									<td>Unlimited</td>
+									<td>25 online</td>
+								</tr>
+								<tr>
+									<td>Pageview limits</td>
+									<td class="warning">Unlimited</td>
+									<td>100k</td>
+									<td>Unlimited</td>
+									<td>Unlimited</td>
+								</tr>
+								<tr>
+									<td>Bandwidth limits</td>
+									<td class="warning">Unlimited</td>
+									<td>Unlimited</td>
+									<td>25gb</td>
+									<td>Unlimited</td>
+								</tr>
+
+								<tr>
+									<th colspan="5" class="subheader">Forum features</th>
+								</tr>
+								<tr>
+									<td>Custom logo and style</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+								</tr>
+								<tr>
+									<td>Use your own domain name</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Forums</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+								</tr>
+								<tr>
+									<td>Private Forums</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+								</tr>
+								<tr>
+									<td>Conversations</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+								</tr>
+								<tr>
+									<td>Events</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td></td>
+									<td><span class="glyphicon glyphicon-minus"></span></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Trending Items</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Private messages</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+								</tr>
+								<tr>
+									<td>Private group messages</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Default legal documents to reduce your liability</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+
+								<tr>
+									<th colspan="5" class="subheader">Comments</th>
+								</tr>
+								<tr>
+									<td>Formatting</td>
+									<td class="warning">Markdown<br/>and BBCode<br/>and HTML</td>
+									<td>Markdown<br/>or BBCode<br/>or HTML</td>
+									<td>BBCode</td>
+									<td>BBCode</td>
+								</tr>
+								<tr>
+									<td>@mention notifications</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Reply notifications</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td></td>
+									<td></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+								</tr>
+								<tr>
+									<td>Auto-embed <abbr title="i.e. YouTube videos, Garmin routes, etc">media</abbr></td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+
+								<tr>
+									<th colspan="5" class="subheader">Users</th>
+								</tr>
+								<tr>
+									<td>Members List</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+								</tr>
+								<tr>
+									<td>Online Members List</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+								</tr>
+								<tr>
+									<td>Can change username</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+
+								<tr>
+									<th colspan="5" class="subheader">Security &amp; spam protection</th>
+								</tr>
+								<tr>
+									<td>Inline moderation tools</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+								</tr>
+								<tr>
+									<td>IP blocking</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+								</tr>
+								<tr>
+									<td>User banning</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+								</tr>
+								<tr>
+									<td><a href="http://www.stopforumspam.com/">Stop Forum Spam</a></td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-ok"></span></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>External link malware protection</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+
+								<tr>
+									<th colspan="5" class="subheader">Developers</th>
+								</tr>
+								<tr>
+									<td>Full API access to all functionality</td>
+									<td class="warning"><span class="glyphicon glyphicon-ok"></span></td>
+									<td><span class="glyphicon glyphicon-minus"></span></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</table>
+						</div>
+						<div class="compare-features-footnotes">
+							<p>vBulletin has a global calendar for events, but does not support events within forums, event attendance, event notifications.</p>
+
+							<p>Vanilla has an API but you need to pay more for it. Whilst you can do a lot with the API, not everything that the site does can be done with the API.</p>
+
+							<p>Where is Discourse? As of writing Discourse is in a beta period and their pricing and features have not yet stabilised to allow us to perform a comparison.</p>
+						</div>
+					</div>
+				</div>
+			</div> <!-- /.compare-features -->
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+{% block js %}
+<script type="text/javascript">
+(function(){
+
+	$('.dropmenu').on('click', 'li', function(e){
+
+		var self = $(e.currentTarget),
+				parent = self.parent();
+
+		parent.find('li').removeClass('selected');
+		self.addClass('selected');
+
+	});
+
+})();
+</script>
+{% endblock %}

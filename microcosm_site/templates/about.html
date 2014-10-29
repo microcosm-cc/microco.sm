@@ -1,0 +1,99 @@
+{% extends 'marketing_base.html' %}
+
+{% block content %}
+<div id="about-jumbotron" class="jumbotron">
+	<div class="jumbotron-text">
+		<img src="{{STATIC_URL}}/img/icon-speech-bike.png" />
+		<div class="text-headline">
+			<h2>About Microcosm</h2>
+			<p>
+				Microcosm is a provider of forum technology for great communities
+			</p>
+		</div>
+		<ul class="list-ok jumbotron-list">
+			<li>
+				<div class="glyphicon-wrapper">
+					<span class="glyphicon glyphicon-ok"></span>
+				</div>
+				<br/>
+				<strong>Safe &amp; Secure</strong>
+				<p>We take care of the tech<br/>and spam prevention</p>
+			</li>
+			<li>
+				<div class="glyphicon-wrapper">
+					<span class="glyphicon glyphicon-ok"></span>
+				</div>
+				<br/>
+				<strong>Mobile first</strong>
+				<p>Keeps your community engaged<br/>on the move</p>
+			</li>
+			<li>
+				<div class="glyphicon-wrapper">
+					<span class="glyphicon glyphicon-ok"></span>
+				</div>
+				<br/>
+				<strong>No lock-in</strong>
+				<p>You own your data and can<br/>export it anytime</p>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<h3 class="content-section-title content-section-title-hr">
+				<span>Team</span>
+			</h3>
+
+			<ul class="list-span list-span-3 list-team">
+				<li>
+					<img src="{{ STATIC_URL }}img/microcosm-david.jpg" />
+					<h2>David Kitchen</h2>
+					<p class="list-team-role">Founder and CEO</p>
+					<p>
+						Developer to startups and multi-nationals. MSc in Computer Science.
+						Runs one of the largest cycling forums in the world.
+						<br/>
+						Experienced in building teams and running companies.
+					</p>
+					<a href="http://twitter.com/buro9" target="_blank">@buro9</a>
+				</li>
+				<li>
+					<img src="{{ STATIC_URL }}img/microcosm-matt.jpg" />
+					<h2>Matt Cottingham</h2>
+					<p class="list-team-role">Co-founder, lead developer</p>
+					<p>
+						Degrees from Cambridge University and Imperial College.
+						Runs two developer email lists with over 9,000 subscribers.
+					</p>
+					<p>
+						Organizer of developer events inc' the Go London User Group.
+					</p>
+					<a href="http://twitter.com/mattrco" target="_blank">@mattrco</a>
+				</li>
+				<li>
+					<img src="{{STATIC_URL}}img/icon-help-wanted.png"/>
+					<h2>You?</h2>
+					<p class="list-team-role">Ambitious &amp; Motivated</p>
+					<p>
+						We are always on the look out for talented people from development
+						to business to customer services, to join our growing team.
+						Email us at:
+					</p>
+					<a href="mailto:work@microco.sm">work@microco.sm</a>
+				</li>
+			</ul>
+
+			<div class="contact-block">
+				<p><strong>Email us at</strong></p>
+				<p class="text-large">
+					<a href="mailto:founders@microco.sm">founders@microco.sm</a>
+				</p>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+{% endblock %}

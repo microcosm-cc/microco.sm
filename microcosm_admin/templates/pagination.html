@@ -1,0 +1,62 @@
+{% if pagination and pagination.total_pages > 1 %}
+
+<ul class="pagination">
+	{% if pagination.first %}
+		<li>
+			<a href="{{ pagination.first.href }}">First</a>
+		</li>
+	{% endif %}
+
+	{% if pagination.prev %}
+		<li>
+			<a href="{{ pagination.prev.href }}">{{ pagination.prev.title }}</a>
+		</li>
+	{% endif %}
+
+	{% if pagination.self %}
+		<li class="active">
+			<a href="{{ pagination.self.href }}">{{ pagination.self.title }}</a>
+		</li>
+	{% endif %}
+
+	{% if pagination.next %}
+		<li>
+			<a href="{{ pagination.next.href }}">{{ pagination.next.title }}</a>
+		</li>
+	{% endif %}
+
+	{% if pagination.last %}
+		<li>
+			<a href="{{ pagination.last.href }}">Last</a>
+		</li>
+	{% endif %}
+</ul>
+
+<div class="pagination-alt">
+
+	{% if pagination.total_pages > 1 %}
+		Page
+		<form
+			name="paginationByOffset"
+			method="GET"
+			action=""
+			data-limit="{{ pagination.limit }}"
+			data-max="{{ pagination.total_pages }}"
+		>
+			<input
+				type="text"
+				class="form-control"
+				value="{{ pagination.page }}"
+				pattern="[0-9]*"
+			/>
+			<input name="offset" type="hidden" />
+			{% if content.query and content.query.searched %}
+			<input name="q" type="hidden" value="{{ content.query.searched }}" />
+			{% endif %}
+		</form>
+		of {{ pagination.total_pages }}
+		{% else %}
+			Page 1 of 1
+	{% endif %}
+</div>
+{% endif %}

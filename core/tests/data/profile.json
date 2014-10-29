@@ -1,0 +1,46 @@
+{
+    "context": "",
+    "status": 200,
+    "data": {
+        "id": 5,
+        "siteId": 5,
+        "userId": 1,
+        "profileName": "Frodo",
+        "visible": true,
+        "styleId": 1,
+        "itemCount": 0,
+        "commentCount": 0,
+        "created": "2013-12-03T11:18:30.950121Z",
+        "lastActive": "2013-12-03T11:18:30.950121Z",
+        "avatar": "/api/v1/files/66cca61feb8001cb71a9fb7062ff94c9d2543340",
+        "banned": false,
+        "admin": true,
+        "meta": {
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "/api/v1/profiles/5"
+                },
+                {
+                    "rel": "site",
+                    "href": "/api/v1/sites/5"
+                }
+            ],
+            "permissions": {
+                "create": false,
+                "read": true,
+                "update": false,
+                "delete": false,
+                "closeOwn": false,
+                "openOwn": false,
+                "readOthers": false,
+                "guest": true,
+                "banned": false,
+                "owner": false,
+                "moderator": false,
+                "siteOwner": false
+            }
+        }
+    },
+    "error": null
+}

@@ -1,0 +1,85 @@
+{% extends 'marketing_base.html' %}
+
+{% block content %}
+<div id="developers-jumbotron" class="jumbotron">
+	<div class="jumbotron-text">
+		<img src="{{STATIC_URL}}/img/icon-speech-dev.png" />
+		<div class="text-headline">
+			<h2>Developers</h2>
+			<p>
+				We give you a no-cost, no-hassle, fully-featured API.<br/>
+				Our own sites use the API so that anything the sites can do, you can do.
+			</p>
+		</div>
+	</div>
+</div>
+<div id="developersview" class="generic-page">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+
+				<div class="generic-page-content">
+					<div class="generic-page-header">
+						<h2>Developers</h2>
+					</div>
+					<div class="generic-page-body">
+						<ul>
+							{% comment %}
+							<li>
+								<strong>Getting Started</strong>
+								<p>
+									What is a Microcosm? How does it work? This getting started guide aims to quickly get new developers up and running with the Microcosm platform.
+								</p>
+								<p>
+									<a href="#">
+										<span class="glyphicon glyphicon-new-window"></span>
+										Get started with the Microcosm platform
+									</a>
+								</p>
+							</li>
+							{% endcomment %}
+							<li>
+								<strong>API Documentation</strong>
+								<p>
+								After you've created your site, learn how to interface the forum by using our API.
+								</p>
+								<p>
+									<a href="http://microcosm-cc.github.io/">
+										<span class="glyphicon glyphicon-new-window"></span>
+										Microcosm API documentation
+									</a>
+								</p>
+							</li>
+							<li>
+								<strong>Fork us on GitHub</strong>
+								<p>
+									Learn how we built the microcosm frontend client, <a href="https://github.com/microcosm-cc/microweb">microweb</a>, and grab the code from our Github repositiory.
+								</p>
+								<p>
+									<a href="https://github.com/microcosm-cc">
+										<span class="glyphicon glyphicon-new-window"></span>
+										Microcosm on Github
+									</a>
+								</p>
+							</li>
+							<li>
+								<strong>Developers Forum</strong>
+								<p>
+									Get help and follow progress on the developer forums.
+								</p>
+								<p>
+									<a href="https://meta.microco.sm/">
+										<span class="glyphicon glyphicon-new-window"></span>
+										Developer forums
+									</a>
+								</p>
+							</li>
+						</ul>
+					</div>
+				</div> <!-- /generic-page -->
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

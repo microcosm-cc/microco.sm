@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>Create a site</h1>
+	<ul>
+		<form action="" method="POST">
+		{% csrf_token %}
+		<li>{{ form.title }}</li>
+		<li>{{ form.description }}</li>
+		<li>{{ form.subdomainKey}}</li>
+		<li>{{ form.logoUrl }}</li>
+		<li>{{ form.headerBackgroundUrl }}</li>
+		<li>{{ form.headerBackgroundColour }}</li>
+		<li>{{ form.backgroundUrl }}</li>
+		<li>{{ form.backgroundColour }}</li>
+		<li>{{ form.allowUserMicrocosms }}</li>
+		<input type="submit" class="btn btn-lg btn-primary" value="Create site" tabindex="1">
+		</form>
+	</ul>
+{% endblock %}

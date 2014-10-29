@@ -1,0 +1,117 @@
+{% extends 'marketing_base.html' %}
+
+{% block content %}
+<div id="homeview-jumbotron" class="jumbotron">
+	<div class="jumbotron-text">
+		<div class="slider-faces">
+			<div class="face"></div>
+		</div>
+		<div class="text-headline">
+			<h2>Build a community for <span class="topic">your interests</span></h2>
+			<p>Microcosm is a modern forum platform for community creators like you.</p>
+		</div>
+		<div class="well text-headline">
+			<h2>Microcosm is shutting down</h2>
+			<p>2014-10-16 - We have been unable to convince others of the investable or purchaseable value in Microcosm. The reality of that is that we have reached the end of the investment that enabled us to create and run the business and as our revenue doesn't yet cover all costs, we have no alternative than to wind up the company.</p>
+			<p>Existing customers can sign-in and manage their sites - service will continue during the winding-up process and we shall contact you in the coming weeks.</p>
+			<p>Investors should check for updates with Seedrs and wait for them to assist you with claiming SEIS relief on your investment.</p>
+			<p><a href="https://medium.com/@buro9/the-journey-of-a-london-startup-what-i-learned-when-my-company-failed-c67acd74b862">The story of how we got here is on Medium</a>.</p>
+		</div>
+	</div>
+</div>
+
+<div id="homeview-body">
+	<div class="container">
+		<h1 class="benefits-header">
+			Some of our customers' sites
+		</h1>
+		<div class="showcase">
+			<ul class="list-span list-span-3">
+				<li>
+					<a href="http://www.lfgss.com/">
+						<img src="https://sandbox.microco.sm/api/v1/files/0266d45a0ac7c081b59c9a0213a13a9f0cada494.svg" alt="lfgss.com"/>
+					</a>
+				</li>
+				<li>
+					<a href="http://forum.espruino.com/">
+						<img src="https://sandbox.microco.sm/api/v1/files/35c52fba2a6a2cda646d5ef846faff9f12618868.png" alt="espruino.com"/>
+					</a>
+				</li>
+				<li>
+					<a href="http://forum.islington.cc/">
+						<img src="https://islingtoncc.microco.sm/api/v1/files/11bdffdda6a95442f75f6ebf252c4123cc227fea.png" alt="islington.cc"/>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-offset-1 col-lg-10">
+				<h1 class="benefits-header">
+					We help you grow your community
+				</h1>
+				<h3 class="content-section-title">
+					by providing you with
+				</h3>
+			</div>
+		</div>
+		<ul class="benefits row">
+			<li>
+				<div class="col-md-6 benefits-image">
+					<img src="{{ STATIC_URL }}img/slides-1.png" />
+				</div>
+				<div class="col-md-6 benefits-text">
+					<div class="benefits-text-inner-right">
+						<h2>Great looking forums</h2>
+						<p>We make your site and content look really good.</p>
+						<p>We make it super easy to customize your site so that it reflects the identity of the community.</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="col-md-6 pull-right benefits-image">
+					<img src="{{ STATIC_URL }}img/slides-2.png" />
+				</div>
+				<div class="col-md-6 benefits-text">
+					<div class="benefits-text-inner-left">
+						<h2>Designed for all devices</h2>
+						<p>No more pinch and zoom. Every forum we host is mobile friendly from day one.</p>
+						<p>We also provide developers with a full API to encourage apps to suit the needs of your community.</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="col-md-6 benefits-image">
+					<img src="{{ STATIC_URL }}img/slides-3.png" />
+				</div>
+				<div class="col-md-6 benefits-text">
+					<div class="benefits-text-inner-right">
+						<h2>With all the tools you need</h2>
+						<p>Organizing events couldn't be easier. No more trying to coerce people to use Facebook, Google Calendar or Meetup.</p>
+						<p>Your community is already on the site and so the tools your community need should be there with you.</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="col-md-6 pull-right benefits-image">
+					<img src="{{ STATIC_URL }}img/slides-4.png" />
+				</div>
+				<div class="col-md-6 benefits-text">
+					<div class="benefits-text-inner-left">
+						<h2>And we take care of the tech</h2>
+						<p>It is our job to just make it work with no technical knowledge required.</p>
+						<p>Nothing to install, no updates to manage, safe and secure.</p>
+						<p>Leaving you to focus on the important stuff, building your community.</p>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{{STATIC_URL}}js/swipe.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/homeview.js"></script>
+{% endblock %}

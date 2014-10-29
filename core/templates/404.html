@@ -1,0 +1,13 @@
+{% extends 'marketing_base.html' %}
+
+{% block title %}Error 404 (Not Found) | {{ site.title | safe }}{% endblock title %}
+
+{% block content %}
+<div class="container dashboard-container">
+	<div class="row">
+		<div class="col-sm-8 col-md-9 dashboard-left">
+			<p>Sorry, couldn't find that. <a href="/">Click here to leave this place.</a></p>
+		</div>
+	</div>
+</div>
+{% endblock %}

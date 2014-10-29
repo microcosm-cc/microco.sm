@@ -1,0 +1,88 @@
+<form id="form-theme" role="form" class="form-horizontal" action="{% url 'dashboard-sites-edit' site_edit.site_id %}"
+      method="POST" enctype="multipart/form-data" xmlns="http://www.w3.org/1999/html">
+	{% csrf_token %}
+	<input type="hidden" name="site_subdomain_key" value="{{ site_edit.subdomain_key}}" />
+	<div class="form-group">
+		<label for="input_bg_image" class="col-sm-4 col-md-3">Background image</label>
+		<div class="col-sm-8 col-md-8">
+			<input type="file" name="bg_image" id="input_bg_image" accept="image/*"> <!--<a id="input_bg_image_remove" href="#">Remove background image</a>-->
+		</div>
+		<div class="col-sm-8 col-md-8">
+			{% if site_edit.background_url %}<a href="{{ site_edit.background_url }}">Current background image</a>{% endif %}
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-4 col-md-3"></label>
+		<div class="col-sm-4 col-md-3">
+			<div class="radio">
+				<label>
+					<input type="radio" name="bg_position" value="tile" {% if site_edit.background_position == "tile" %}checked="checked"{% endif %}> Tile
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" name="bg_position" value="cover" {% if site_edit.background_position == "cover" %}checked="checked"{% endif %}> Stretch
+				</label>
+			</div>
+		</div>
+		<div class="col-sm-4 col-md-4">
+			<div class="radio">
+				<label>
+					<input type="radio" name="bg_position" value="left" {% if site_edit.background_position == "left" %}checked="checked"{% endif %}> Position left
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" name="bg_position" value="center" {% if site_edit.background_position == "center" %}checked="checked"{% endif %}> Position center
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" name="bg_position" value="right" {% if site_edit.background_position == "right" %}checked="checked"{% endif %}> Position right
+				</label>
+			</div>
+		</div>
+	</div>
+
+	{% if site_edit.background_url %}
+	<div class="form-group">
+		<label for="input_bg_remove" class="col-sm-4 col-md-3">Remove current background image</label>
+		<div class="col-sm-8 col-md-8">
+			<input type="checkbox" id="input_bg_remove" name="remove_bg" value="false" />
+		</div>
+	</div>
+	{% endif %}
+
+	<div class="form-group">
+		<label for="input_bg_color" class="col-sm-4 col-md-3">Background color</label>
+		<div class="col-sm-4 col-md-5">
+			<span class="form-control colorpicker-preview" {% if site_edit.background_color %}style="background-color: {{ site_edit.background_color }};"{% endif %}></span>
+			<input type="text" class="form-control colorpicker-widget" name="bg_color" id="input_bg_color" {% if site_edit.background_color %}value="{{site_edit.background_color}}"{% else %}placeholder="eg. #FFFFFF"{% endif %}>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="input_link_color" class="col-sm-4 col-md-3">Link color</label>
+		<div class="col-sm-4 col-md-5">
+			<span class="form-control colorpicker-preview" {% if site_edit.link_color %}style="background-color: {{ site_edit.link_color }};"{% endif %}></span>
+			<input type="text" class="form-control colorpicker-widget" name="link_color" id="input_link_color" {% if site_edit.link_color %}value="{{site_edit.link_color}}"{% else %}placeholder="eg. #FFFFFF"{% endif %} />
+		</div>
+	</div>
+
+	<!--<div class="form-group">
+		<label for="input_overlay_color" class="col-sm-4 col-md-3">Overlay color</label>
+		<div class="col-sm-4 col-md-5">
+			<span class="form-control colorpicker-preview"></span>
+			<input type="text" class="form-control colorpicker-widget" id="input_overlay_color" {% if site_edit.background_color %}value="{{site_edit.background_color}}"{% else %}placeholder="eg. #FFFFFF"{% endif %}/>
+		</div>
+	</div>-->
+
+	<div class="form-group">
+		<label class="col-sm-4 col-md-3"></label>
+		<div class="col-sm-8 col-md-8">
+			<button type="submit" class="btn btn-primary">Save changes</button>
+			<!--<button class="btn btn-default">Cancel</button>-->
+		</div>
+	</div>
+</form>

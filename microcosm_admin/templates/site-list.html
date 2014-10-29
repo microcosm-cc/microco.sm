@@ -1,0 +1,93 @@
+{% extends 'admin_base.html' %}
+{% block navbar %}
+	{% include 'navbar.html' %}
+{% endblock %}
+{% block content %}
+<div class="dashboard">
+<div class="container dashboard-header">
+		<div class="row">
+			<div class="cols-sm-12">
+				<h2>Welcome</h2>
+				{% comment %}<a href="#">view quick tour</a>{% endcomment %}
+			</div>
+		</div>
+	</div>
+	<div class="container dashboard-container">
+		<div class="row">
+			<div class="col-sm-8 col-md-9 dashboard-left">
+
+{% comment %}
+				<div class="dashboard-left-menu">
+					<ul>
+						<li class="active">
+							<a href="{% url 'dashboard-sites' %}">
+								<img/>
+								<span>Sites</span>
+							</a>
+						</li>
+
+						<li class="dashboard-left-menu-options">
+							<div class="dropdown">
+								<a href="#" data-toggle="dropdown" data-target="#dashboard-left-menu-options">More Options <b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+									<li><a href="#">More options 1</a></li>
+									<li><a href="#">More options 2</a></li>
+									<li><a href="#">More options 3</a></li>
+ 								</ul>
+						</li>
+					</ul>
+
+				</div>
+{% endcomment %}
+				<div class="pagination">
+					{% include 'pagination.html' %}
+				</div>
+				{% if content.sites.items %}
+				<ul class="dashboard-list">
+					{% for site in content.sites.items %}
+					<li>
+						<div class="dashboard-list-left">
+							<a class="dashboard-list-left-sitename" href="{% url 'dashboard-sites-edit' site.site_id %}?section_name=details">
+								<h3>
+									{{ site.title }}
+								</h3><span class="glyphicon glyphicon-pencil"></span></a>
+							{% if site.domain %}
+							<a class="dashboard-list-left-siteurl" href="http://{{ site.domain }}">
+								{{ site.domain }}
+							{% else %}
+							<a class="dashboard-list-left-siteurl" href="http://{{ site.subdomain_key }}.microco.sm">
+								{{ site.subdomain_key }}.microco.sm
+							{% endif %}
+								<span class="glyphicon glyphicon-new-window"></span>
+							</a>
+						</div>
+						<div class="dashboard-list-right">
+							{% if site.unresolved_flags > 0 %}
+							<a href="#">
+								<span class="glyphicon glyphicon-flag"></span>
+								{{ site.unresolved_flags }} unresolved flags
+							</a>
+							{% endif %}
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+				{% else %}
+				<h5>You haven't created any sites yet. Why not <a href="{% url 'dashboard-sites-create' %}">create one now?</a></h5>
+				{% endif %}
+
+			</div>
+			<div class="col-sm-4 col-md-3 dashboard-right">
+
+				<a href="{% url 'dashboard-sites-create' %}" class="btn btn-primary btn-block">Add a site</a>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+{% endblock %}
+{% block footer %}
+	{% include 'footer.html' %}
+{% endblock %}
