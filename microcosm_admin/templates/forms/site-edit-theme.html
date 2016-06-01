@@ -22,17 +22,17 @@
 			</div>
 			<div class="radio">
 				<label>
-					<input type="radio" name="bg_position" value="cover" {% if site_edit.background_position == "cover" %}checked="checked"{% endif %}> Stretch
+					<input type="radio" name="bg_position" value="cover" {% if site_edit.background_position == "cover" %}checked="checked"{% endif %}> Stretch (Keep Aspect)
 				</label>
 			</div>
 			<div class="radio">
 				<label>
-					<input type="radio" name="bg_position" value="vertical" {% if site_edit.background_position == "vertical" %}checked="checked"{% endif %}> Stretch Vertical
+					<input type="radio" name="bg_position" value="tall" {% if site_edit.background_position == "tall" %}checked="checked"{% endif %}> Stretch (Fit Height)
 				</label>
 			</div>
 			<div class="radio">
 				<label>
-					<input type="radio" name="bg_position" value="horizontal" {% if site_edit.background_position == "horizontal" %}checked="checked"{% endif %}> Stretch Horizontal
+					<input type="radio" name="bg_position" value="wide" {% if site_edit.background_position == "wide" %}checked="checked"{% endif %}> Stretch (Fit Width)
 				</label>
 			</div>
 		</div>
