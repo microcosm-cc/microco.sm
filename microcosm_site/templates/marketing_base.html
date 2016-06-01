@@ -111,12 +111,12 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-36931318-3', 'microco.sm');
+      ga('create', 'UA-36951023-3', 'microco.sm');
       ga('require', 'displayfeatures');
-      {% if user %}
-      ga('set', '&uid', {{user.id}});
-      {% endif %}
+      {% if user %}ga('set', 'userId', {{user.id}});{% endif %}
       ga('send', 'pageview');
+
+
 
     </script>
     {% block js %}{% endblock %}
