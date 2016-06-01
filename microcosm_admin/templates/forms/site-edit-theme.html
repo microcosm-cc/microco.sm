@@ -25,6 +25,16 @@
 					<input type="radio" name="bg_position" value="cover" {% if site_edit.background_position == "cover" %}checked="checked"{% endif %}> Stretch
 				</label>
 			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" name="bg_position" value="vertical" {% if site_edit.background_position == "vertical" %}checked="checked"{% endif %}> Stretch Vertical
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" name="bg_position" value="horizontal" {% if site_edit.background_position == "horizontal" %}checked="checked"{% endif %}> Stretch Horizontal
+				</label>
+			</div>
 		</div>
 		<div class="col-sm-4 col-md-4">
 			<div class="radio">
