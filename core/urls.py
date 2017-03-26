@@ -5,6 +5,7 @@ from core.views import FaviconView
 from core.views import RobotsView
 from core.views import ProfileView
 from core.views import AuthenticationView
+from core.views import Auth0View
 
 
 urlpatterns = patterns('',
@@ -16,6 +17,7 @@ urlpatterns = patterns('',
 
 	# Auth
 	url(r'^login/$', AuthenticationView.login, name='login'),
+    url(r'^auth0login/$', Auth0View.login, name='auth0login'),
 	url(r'^logout/$', AuthenticationView.logout, name='logout'),
 
 	# User profiles

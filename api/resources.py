@@ -19,6 +19,9 @@ def response_list_to_dict(responses):
     """
 
     response_dict = {}
+    if responses is None:
+        return response_dict
+
     for response in responses:
         # Only follow one redirect. This is specifically to handle the /whoami
         # case where the client is redirected to /profiles/{id}
@@ -133,6 +136,11 @@ class Site(object):
         if data.get('backgroundPosition'): site.background_position = data['backgroundPosition']
         if data.get('linkColor'): site.link_color = data['linkColor']
         if data.get('gaWebPropertyId'): site.ga_web_property_id = data['gaWebPropertyId']
+
+        # auth configs are optional
+        if data.get('auth0Domain'): site.auth0_domain = data['auth0Domain']
+        if data.get('auth0ClientId'): site.auth0_client_id = data['auth0ClientId']
+
         return site
 
     @staticmethod
@@ -184,6 +192,10 @@ class Site(object):
             repr['linkColor'] = self.linkColor
         if hasattr(self, 'gaWebPropertyId'):
             repr['gaWebPropertyId'] = self.ga_web_property_id
+        if hasattr(self, 'auth0Domain'):
+            repr['auth0Domain'] = self.auth0_domain
+        if hasattr(self, 'auth0ClientId'):
+            repr['auth0ClientId'] = self.auth0_client_id
         return repr
 
 

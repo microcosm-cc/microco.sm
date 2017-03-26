@@ -21,8 +21,8 @@ class LandingView():
             return respond_with_error(request, exc)
 
         view_data = {
-            'user': Profile(responses[request.whoami_url], summary=False) if request.whoami_url else None,
             'site': request.site,
+            'user': Profile(responses[request.whoami_url], summary=False) if request.whoami_url else None,
             'login_target': reverse('dashboard-sites')
         }
         return render(request, 'index.html', view_data)

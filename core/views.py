@@ -1,11 +1,18 @@
 import datetime
 import logging
 import requests
+import grequests
+import newrelic
+import random
+import string
 
 from requests import RequestException
 
-import grequests
-import newrelic
+
+from urllib import urlencode
+from urlparse import urlparse
+from urlparse import parse_qs
+from urlparse import urlunparse
 
 from django.conf import settings
 from django.http import HttpResponseNotFound
@@ -19,6 +26,7 @@ from django.template import RequestContext
 from django.template import loader
 from django.views.generic.base import RedirectView
 from django.views.generic.base import TemplateView
+from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 
 from api.resources import response_list_to_dict
@@ -32,6 +40,11 @@ from sitegen.helpers import build_url
 
 logger = logging.getLogger('core.views')
 
+def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
+    """
+    generates identifies that are used as cache busters in querystrings
+    """
+    return ''.join(random.SystemRandom().choice(chars) for _ in range(size))
 
 class ProfileView(object):
     single_template = 'profile.html'
@@ -178,6 +191,58 @@ class AuthenticationView(object):
                 return ErrorView.server_error(request)
 
         return response
+
+
+class Auth0View(object):
+
+    @staticmethod
+    @csrf_exempt
+    def login(request):
+        """
+        Log a user in using auth0
+
+        Creates an access_token using an auth0 code and state.
+
+        Sets this access token as a cookie.
+
+        'target_url' based as a GET parameter determines where the user is
+        redirected.
+        """
+
+        code = request.GET.get('code')
+        state = request.GET.get('state')
+        target_url = request.GET.get('target_url')
+
+        postdata = {
+            'Code': code,
+            'State': state,
+            'ClientSecret': settings.CLIENT_SECRET
+        }
+
+        url = build_url(request.get_host(), ['auth0'])
+        try:
+            response = requests.post(url, data=postdata, headers={})
+        except RequestException:
+            return ErrorView.server_error(request)
+
+        access_token = response.json()['data']
+        if access_token is None or access_token == '':
+            return ErrorView.server_error(request)
+
+        target_url = '/dashboard/'
+
+        # Add cachebuster as the unauth'd page may be very aggressively cached
+        pr = urlparse(target_url)
+        qs = parse_qs(pr[4])
+        qs.update({'cachebuster': id_generator()})
+        target_url = urlunparse((pr[0], pr[1], pr[2], pr[3], urlencode(qs), pr[5]))
+
+        # Redirect and set cookie
+        resp = HttpResponseRedirect(target_url)
+        expires = datetime.datetime.fromtimestamp(2 ** 31 - 1)
+        resp.set_cookie('access_token', access_token, expires=expires, httponly=True)
+       
+        return resp
 
 
 def respond_with_error(request, exception):

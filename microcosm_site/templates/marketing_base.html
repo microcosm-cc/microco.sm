@@ -46,13 +46,10 @@
           <li>
             <a id="navbar-developers" href="{% url 'site-developers' %}" {%if site_section == 'developers'%}class="active"{%endif%}>Developers</a>
           </li>
-          <li>
-            <a id="navbar-forums" href="http://meta.microco.sm">Support forums</a>
-          </li>
           <li>{% if user %}
 	          <a href="{% url 'dashboard' %}">My Account</a>
 	          {% else %}
-	          <a href="#" onclick="navigator.id.request()">Sign In</a>
+            <a onclick="authSignin();">Sign In</a>
 	          {% endif %}
           </li>
         </ul>
@@ -62,47 +59,50 @@
     {% block content %}{% endblock %}
 
     {% include 'footer.html' %}
-
-    <!-- Mozilla Persona -->
-    <script src="https://login.persona.org/include.js"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
 
-    <!-- Persona signin -->
-    <form id="signin-form" class="hidden" method="POST" action="{% url 'login' %}">
-        {% csrf_token %}
-        <input id="Assertion" type="hidden" name="Assertion" value="" />
-        <input id="target_url" type="hidden" name="target_url" value="{{request.get_full_path}}" />
-    </form>
 
-    <!-- Persona signout -->
-    <form id="signout-form" class="hidden" method="POST" action="{% url 'logout' %}">
-        {% csrf_token %}
-    </form>
-
-    <script type="text/javascript">
-        function personaSignin() {
-            navigator.id.request();
-        }
-        function personaSignout() {
-            navigator.id.logout();
-            document.getElementById("signout-form").submit();
-        }
-        navigator.id.watch({
-            loggedInUser: {% if user.email %}'{{user.email}}'{% else %}null{% endif %},
-        onlogin: function(assertion) {
-            {% if user.email %}return false;{% endif %}
-                document.getElementById("Assertion").value = assertion;
-                document.getElementById("signin-form").submit();
-            },
-            onlogout: function() {
-                {% if user.email %}return false;{% endif %}
-                    document.getElementById("signout-form").submit();
-                },
-            });
-    </script>
+    {% if not user %}
+      <script src="{{ STATIC_URL }}3rd/auth0/lock-passwordless/2.2.3/lock-passwordless.min.js"></script>
+      <script type="text/javascript">
+      function auth0signin() {
+        var domain = 'buro9.eu.auth0.com';
+        var clientID = 'kdqHoUgKCZWTPS39Hd4fcMC3bY0Ieydp';
+        var opt = {
+          autoclose: true,
+          connections: ['google-oauth2','windowslive'],
+          dict: {
+            title: 'Sign in'
+          },
+          icon: 'https://meta.microco.sm/static/themes/1/logo.png',
+          defaultLocation: 'GB',
+          focusInput: false,
+          popup: false,
+          primaryColor: '#aaaaaa',
+          socialBigButtons: true,
+          authParams: {
+            state: '/dashboard'
+          },
+          callbackURL: 'https://microco.sm/auth0login/',
+          responseType: 'code'
+        };
+        var lock = new Auth0LockPasswordless(clientID, domain);
+        lock.socialOrEmailcode(opt);
+      }
+      function authSignin() {
+        auth0signin();
+      }
+      </script>
+    {% else %}
+      <script type="text/javascript">
+      function authSignout() {
+        document.getElementById("signout-form").submit();
+      }
+      </script>
+    {% endif %}
 
     <script type="text/javascript">
       // GA
