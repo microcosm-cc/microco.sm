@@ -1,6 +1,17 @@
 {% extends 'marketing_base.html' %}
 
 {% block content %}
+
+<ul style="display:none">
+{% if headers %} 
+	<li>Headers</li>
+		{% for name, value in headers.items %}{% if value %}<li>{{ name }} => {{ value }}</li>{% endif %}
+		{% endfor %}
+{% else %}
+	<li>No headers</li>
+{% endif %}
+</ul>
+
 <div id="homeview-body">
 	<div class="container">
 		<div class="text-headline" style="text-align:center;">

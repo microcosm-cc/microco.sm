@@ -1,5 +1,7 @@
 import grequests
 
+import re
+
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
 
@@ -15,6 +17,16 @@ from core.views import respond_with_error
 class LandingView():
     @staticmethod
     def index(request):
+
+        regex_http_          = re.compile(r'^HTTP_.+$')
+        regex_content_type   = re.compile(r'^CONTENT_TYPE$')
+        regex_content_length = re.compile(r'^CONTENT_LENGTH$')
+
+        request_headers = {}
+        for header in request.META:
+            if regex_http_.match(header) or regex_content_type.match(header) or regex_content_length.match(header):
+                request_headers[header] = request.META[header]
+
         try:
             responses = response_list_to_dict(grequests.map(request.view_requests))
         except APIException as exc:
@@ -23,7 +35,8 @@ class LandingView():
         view_data = {
             'site': request.site,
             'user': Profile(responses[request.whoami_url], summary=False) if request.whoami_url else None,
-            'login_target': reverse('dashboard-sites')
+            'login_target': reverse('dashboard-sites'),
+            'headers': request_headers
         }
         return render(request, 'index.html', view_data)
 
